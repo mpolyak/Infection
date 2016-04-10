@@ -93,7 +93,7 @@ Creates **test_full.html** visualization.
 
 ### Limited Infection
 
-*** Usage: python infection.y [name] --limited [size]***
+** Usage: python infection.py [name] --limited [size]**
 
 Infect users up to the requested size and save result to **[name]_limited_user_versions.csv**, **[name]_limited_user_graph.csv** files.
 
