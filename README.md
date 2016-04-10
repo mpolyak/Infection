@@ -25,7 +25,7 @@ $ python -m unittest
 
 **Usage: python infection.py <name> --population <size>**
 
-This will generate a population of a given size and save the user versions and user graph as <name>_user_versions.csv and <name>_user_graph.csv
+This will generate a population of a given size and save the user versions and user graph as <<name>>_user_versions.csv and <<name>>_user_graph.csv
 
 ```
 $ python infection.py test --population 10
