@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Michael Polyak mpolyak@gmail.com">
+
+    <title>Population Visualization</title>
+
+    <style>
+        html, body
+        {
+            width: 100%;
+            height: 100%;
+
+            margin: 0;
+            padding: 0;
+
+            font-family: "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+
+    <script>
+        window.onload = function ()
+        {
+            "use strict";
+
+            var users = $users;
+
+            var graph = $graph;
+
+            var colors = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"];
+
+            var size = users.length * 10;
+
+            var width = Math.max(size, window.innerWidth);
+            var height = Math.max(size, window.innerHeight);
+
+            var svg = d3.select("body").append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+            svg.append("defs").append("marker")
+                .attr("id",           "arrow")
+                .attr("viewBox",      "-0 -5 10 10")
+                .attr("refX",         25)
+                .attr("refY",         0)
+                .attr("orient",       "auto")
+                .attr("markerWidth",  10)
+                .attr("markerHeight", 10)
+                .append("path")
+                .attr("d", "M 0,-5 L 10 ,0 L 0,5")
+                    .attr("fill",   "silver")
+                    .attr("stroke", "silver");
+
+            var force = d3.layout.force().nodes(users).links(graph)
+                .size([width, height]).linkDistance([50])
+                .charge([-150]).theta(0.1).gravity(0.05)
+                .start();
+
+            var edges = svg.selectAll("line").data(graph).enter()
+                .append("line")
+                    .attr("marker-end",     "url(#arrow)")
+                    .attr("stroke",         "silver")
+                    .attr("pointer-events", "none");
+
+            var nodes = svg.selectAll("circle").data(users).enter()
+                .append("circle")
+                    .attr("r",    15)
+                    .attr("fill", function (d) { return colors[d.version % colors.length]; })
+                    .call(force.drag);
+
+            var labels = svg.selectAll("text").data(users).enter()
+                .append("text")
+                    .attr("fill",           "white")
+                    .attr("dy",             "0.3em")
+                    .attr("x",              function (d) { return d.x; })
+                    .attr("y",              function (d) { return d.y; })
+                    .attr("font-size",      function (d) { return Math.max(0.5, (1 / Math.sqrt(d.name.length))) + "em"; })
+                    .attr("letter-spacing", function (d) { return Math.sqrt((d.name.length - 1) / 2) + "px"; })
+                    .attr("text-anchor",    "middle")
+                    .attr("pointer-events", "none")
+                    .text(function (d) { return d.name; });
+
+            force.on("tick", function ()
+            {
+                edges
+                    .attr("x1", function (d) { return d.source.x; })
+                    .attr("y1", function (d) { return d.source.y; })
+                    .attr("x2", function (d) { return d.target.x; })
+                    .attr("y2", function (d) { return d.target.y; });
+
+                nodes
+                    .attr("cx", function (d) { return d.x; })
+                    .attr("cy", function (d) { return d.y; });
+
+                labels
+                    .attr("x", function (d) { return d.x; })
+                    .attr("y", function (d) { return d.y; });
+            });
+        };
+    </script>
+</body>
+</html>
