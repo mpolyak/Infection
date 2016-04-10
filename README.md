@@ -31,7 +31,7 @@ This will generate a population of a given size and save the user versions and u
 $ python infection.py test --population 10
 ```
 
-This will generate a population of 10 users and save to test_user_versions.csv, test_user_graph.csv files.
+This will generate a population of 10 users and save to **test_user_versions.csv**, **test_user_graph.csv** files.
 
 ```
 $ cat test_user_versions.csv
@@ -66,7 +66,7 @@ This will generate a visualization of user versions and connections for a given 
 $ python infection.py test --visualize
 ```
 
-Creates test.html visualization.
+Creates **test.html** visualization.
 
 ![Alt text](/screenshots/test.png?raw=true "test")
 
@@ -76,18 +76,18 @@ Creates test.html visualization.
 
 Infect user and any connections and save result to <name>_full_user_versions.csv, <name>_full_user_graph.csv files.
 
-```bash
+```
 $ python infection.py test --full D
 Infected 4 users
 ```
 
-This will generate test_full_user_versions.csv and test_full_user_graph.csv files, which can be visualized.
+This will generate **test_full_user_versions.csv** and **test_full_user_graph.csv** files, which can be visualized.
 
 ```
 $ python infection.py test_full --visualize
 ```
 
-Creates test_full.html visualization.
+Creates **test_full.html** visualization.
 
 ![Alt text](/screenshots/test_full.png?raw=true "test full")
 
@@ -102,12 +102,12 @@ $ python infection.py test --limited 7
 Infected 7 users of the 7 requested
 ```
 
-This will generate test_limited_user_versions.csv and test_limited_user_graph.csv files, which can be visualized.
+This will generate **test_limited_user_versions.csv** and **test_limited_user_graph.csv** files, which can be visualized.
 
 ```
 $ python infection.py test_limited --visualize
 ```
 
-Creates test_limited.html visualization.
+Creates **test_limited.html** visualization.
 
 ![Alt text](/screenshots/test_limited.png?raw=true "test limited")
