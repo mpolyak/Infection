@@ -25,7 +25,7 @@ $ python -m unittest
 
 **Usage: python infection.py [name] --population [size]**
 
-This will generate a population of a given size and save the user versions and user graph as [name]_user_versions.csv and [name]_user_graph.csv
+This will generate a population of a given size and save the user versions and user graph as **[name]_user_versions.csv** and **[name]_user_graph.csv**
 
 ```
 $ python infection.py test --population 10
@@ -60,7 +60,7 @@ J,D
 
 **Usage: python infection.py [name] --visualize**
 
-This will generate a visualization of user versions and connections for a given name and save it as [name].html file which can be opened in your browser.
+This will generate a visualization of user versions and connections for a given name and save it as **[name].html** file which can be opened in a browser.
 
 ```
 $ python infection.py test --visualize
@@ -72,9 +72,9 @@ Creates **test.html** visualization.
 
 ### Full Infection
 
-**Usage: python infection.py <name> --full <user>**
+**Usage: python infection.py [name] --full [user]**
 
-Infect user and any connections and save result to <name>_full_user_versions.csv, <name>_full_user_graph.csv files.
+Infect user and any connections and save result to **[name]_full_user_versions.csv**, **[name]_full_user_graph.csv** files.
 
 ```
 $ python infection.py test --full D
@@ -93,9 +93,9 @@ Creates **test_full.html** visualization.
 
 ### Limited Infection
 
-*** Usage: python infection.y <name> --limited <size>***
+*** Usage: python infection.y [name] --limited [size]***
 
-Infect users up to the requested size and save result to <name>_limited_user_versions.csv, <name>_limited_user_graph.csv files.
+Infect users up to the requested size and save result to **[name]_limited_user_versions.csv**, **[name]_limited_user_graph.csv** files.
 
 ```
 $ python infection.py test --limited 7
